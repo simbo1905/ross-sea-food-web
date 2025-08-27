@@ -1,0 +1,35 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Test artifacts
+screenshots/
+test-reports/
+CLAUDE.md
+test_output/
+CLAUDE.md
+
+.claude
+
+.prompt.zsh
+
+
+# Added by cargo
+
+/target
+
+# Downloaded pre-built tools
+.tools/
+.tool/
