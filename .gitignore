@@ -33,3 +33,5 @@ CLAUDE.md
 # Downloaded pre-built tools
 .tools/
 .tool/
+
+.openhands/
