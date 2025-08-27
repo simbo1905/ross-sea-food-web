@@ -1,10 +1,9 @@
-# Just The Game
+# Ross Sea Food Web Quiz
 
-An educational flash-card game to learn the Just command runner. Practice concepts, commands, and best practices through interactive quizzes.
+This is a flash card game based on the NZ [The food web in the Ross Sea](https://www.sciencelearn.org.nz/images/the-food-web-in-the-ross-sea?utm_source=perplexity&utm_source=perplexity)
 
 ## Features
 
-- Multi-choice flash-card game format
 - Serverless - runs as a single HTML file
 - Separates knowledge base (JSON) from game engine
 - Compatible with Chrome OS, macOS, Windows, and mobile devices
