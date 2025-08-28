@@ -2,6 +2,8 @@
 
 This is a flash card game based on the NZ [The food web in the Ross Sea](https://www.sciencelearn.org.nz/images/the-food-web-in-the-ross-sea?utm_source=perplexity&utm_source=perplexity)
 
+🎮 **[Play the game online!](https://simbo1905.github.io/ross-sea-food-web/)**
+
 ## Features
 
 - Serverless - runs as a single HTML file
@@ -80,7 +82,22 @@ just test      # Runs the Rust test-runner against index.html
 
 ## Usage
 
-Open `index.html` in any modern web browser.
+Open `index.html` in any modern web browser, or play online at https://simbo1905.github.io/ross-sea-food-web/
+
+## Continuous Integration & Deployment
+
+This project uses GitHub Actions to automatically build and deploy to GitHub Pages:
+
+- On every push to `main`, the app is built and deployed to GitHub Pages
+- Pull requests trigger builds to ensure changes are valid
+- The deployment includes automatic testing to verify the page is accessible
+
+The CI workflow:
+1. Downloads pre-built tools
+2. Validates JSON files against schema
+3. Builds the single-file HTML application
+4. Deploys to GitHub Pages (main branch only)
+5. Tests the deployment with curl to ensure it's accessible
 
 ## Contributing (Tools Development)
 

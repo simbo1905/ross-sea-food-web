@@ -1,0 +1,122 @@
+{
+  "metadata": {
+    "title": "Ross Sea Food Web - Little Explorers",
+    "description": "Learn about who eats who in the Ross Sea! Perfect for young marine biologists.",
+    "version": "1.0.0",
+    "targetAge": "5-8 years",
+    "subject": "Marine Biology",
+    "mode": "easy"
+  },
+  "questions": [
+    {
+      "id": "kids_1",
+      "question": "The animal above is eaten by which animal below?",
+      "image1": "krill.png",
+      "image2": "penguins.png",
+      "choices": ["Penguins", "Bacteria", "Phytoplankton", "Toothfish"],
+      "correctAnswer": 0,
+      "explanation": "Penguins love to eat krill! Krill are tiny shrimp-like creatures that swim in large groups called swarms. Penguins can eat hundreds of krill in one day!",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_2",
+      "question": "What does this animal eat?",
+      "image1": "seals.png",
+      "image2": "fish.png",
+      "choices": ["Bacteria", "Fish", "Phytoplankton", "Birds"],
+      "correctAnswer": 1,
+      "explanation": "Seals are excellent hunters that catch and eat fish! They have sharp teeth and can swim very fast underwater to catch their prey.",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_3",
+      "question": "The tiny plants above are food for which animal?",
+      "image1": "phytoplankton.png",
+      "image2": "krill.png",
+      "choices": ["Seals", "Penguins", "Krill", "Toothfish"],
+      "correctAnswer": 2,
+      "explanation": "Krill eat phytoplankton! Phytoplankton are tiny plants that float in the water and make their own food using sunlight, just like plants on land!",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_4",
+      "question": "Which animal eats the fish shown above?",
+      "image1": "silverfish.png",
+      "image2": "penguins.png",
+      "choices": ["Phytoplankton", "Bacteria", "Krill", "Penguins"],
+      "correctAnswer": 3,
+      "explanation": "Penguins catch and eat silverfish! These little fish are one of the penguin's favorite foods in the cold waters of Antarctica.",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_5",
+      "question": "What do these giant whales eat?",
+      "image1": "baleen.png",
+      "image2": "krill.png",
+      "choices": ["Krill", "Seals", "Penguins", "Large fish"],
+      "correctAnswer": 0,
+      "explanation": "Baleen whales eat krill! Even though these whales are huge, they eat tiny krill by filtering them through special plates in their mouths called baleen.",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_6",
+      "question": "The squid above is food for which predator?",
+      "image1": "squid.png",
+      "image2": "toothed.png",
+      "choices": ["Krill", "Phytoplankton", "Toothed whales", "Bacteria"],
+      "correctAnswer": 2,
+      "explanation": "Toothed whales like sperm whales hunt and eat squid! They dive very deep in the ocean to catch them.",
+      "category": "food-chain",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_7",
+      "question": "Which tiny organisms help recycle nutrients in the ocean?",
+      "image1": "bacteria.png",
+      "image2": "bacteria.png",
+      "choices": ["Whales", "Bacteria", "Penguins", "Fish"],
+      "correctAnswer": 1,
+      "explanation": "Bacteria are nature's recyclers! They break down dead plants and animals, returning nutrients to the water so new life can grow.",
+      "category": "decomposers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_8",
+      "question": "What do the boats above catch from the Ross Sea?",
+      "image1": "fishing.png",
+      "image2": "toothfish.png",
+      "choices": ["Krill", "Penguins", "Toothfish", "Whales"],
+      "correctAnswer": 2,
+      "explanation": "Fishing boats catch toothfish in the Ross Sea. These large fish are sold for food, but we must be careful not to catch too many!",
+      "category": "human-impact",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_9",
+      "question": "The tiny plants above use sunlight to make food. What are they called?",
+      "image1": "phytoplankton.png",
+      "image2": "phytoplankton.png",
+      "choices": ["Fish", "Krill", "Bacteria", "Phytoplankton"],
+      "correctAnswer": 3,
+      "explanation": "Phytoplankton are tiny plants that float in the ocean. They use sunlight to make their own food, just like trees and grass on land!",
+      "category": "producers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "kids_10",
+      "question": "Which animals live on the ocean floor?",
+      "image1": "benthic.png",
+      "image2": "benthic.png",
+      "choices": ["Flying birds", "Benthic invertebrates", "Penguins", "Whales"],
+      "correctAnswer": 1,
+      "explanation": "Benthic invertebrates live on the ocean floor! These include sea stars, worms, and other creatures that eat bits of food that sink down from above.",
+      "category": "habitat",
+      "difficulty": "easy"
+    }
+  ]
+}

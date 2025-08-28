@@ -1,3 +1,4 @@
+© The University of Waikato Te Whare Wananga o Waikato | www.sciencelearn.org.nz
 https://www.sciencelearn.org.nz/images/the-food-web-in-the-ross-sea
 This diagram shows how the food web in the Ross Sea, Antarctica, works. The arrows represent the energy flow and go from prey species (these get eaten) to predators (the hunters).
 

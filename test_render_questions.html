@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Question Rendering</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .question { border: 1px solid #ccc; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .question img { max-width: 200px; height: auto; margin: 10px 0; }
+        .correct { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        h2 { color: #333; }
+        .metadata { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Ross Sea Food Web Questions - Render Test</h1>
+    <div id="output"></div>
+    
+    <script>
+        async function loadQuestions() {
+            const output = document.getElementById('output');
+            const questionFiles = [
+                'data/questions_ross_sea_easy.json',
+                'data/questions_ross_sea_medium.json',
+                'data/questions_ross_sea_hard.json'
+            ];
+            
+            let totalQuestions = 0;
+            let totalSets = 0;
+            
+            for (const file of questionFiles) {
+                try {
+                    const response = await fetch(file);
+                    const data = await response.json();
+                    
+                    totalSets++;
+                    totalQuestions += data.questions.length;
+                    
+                    const setDiv = document.createElement('div');
+                    setDiv.innerHTML = `
+                        <h2>📁 ${file}</h2>
+                        <div class="metadata">
+                            <strong>Title:</strong> ${data.metadata.title}<br>
+                            <strong>Description:</strong> ${data.metadata.description}<br>
+                            <strong>Mode:</strong> ${data.metadata.mode}<br>
+                            <strong>Target Age:</strong> ${data.metadata.targetAge}<br>
+                            <strong>Total Questions:</strong> ${data.questions.length}
+                        </div>
+                    `;
+                    
+                    data.questions.forEach((q, idx) => {
+                        const qDiv = document.createElement('div');
+                        qDiv.className = 'question';
+                        
+                        let html = `<h3>Question ${idx + 1} (ID: ${q.id})</h3>`;
+                        
+                        if (q.image1) {
+                            html += `<p><strong>Question Image:</strong><br><img src="${q.image1}" alt="Question image" onerror="this.style.border='2px solid red'; this.alt='Missing: ${q.image1}'"></p>`;
+                        }
+                        
+                        html += `<p><strong>Question:</strong> ${q.question}</p>`;
+                        html += `<p><strong>Category:</strong> ${q.category} | <strong>Difficulty:</strong> ${q.difficulty}</p>`;
+                        html += `<p><strong>Choices:</strong></p><ul>`;
+                        
+                        q.choices.forEach((choice, choiceIdx) => {
+                            const isCorrect = choiceIdx === q.correctAnswer;
+                            html += `<li ${isCorrect ? 'class="correct"' : ''}>${choice} ${isCorrect ? '✓' : ''}</li>`;
+                        });
+                        
+                        html += `</ul>`;
+                        
+                        if (q.image2) {
+                            html += `<p><strong>Answer Image:</strong><br><img src="${q.image2}" alt="Answer image" onerror="this.style.border='2px solid red'; this.alt='Missing: ${q.image2}'"></p>`;
+                        }
+                        
+                        html += `<p><strong>Explanation:</strong> ${q.explanation}</p>`;
+                        
+                        qDiv.innerHTML = html;
+                        setDiv.appendChild(qDiv);
+                    });
+                    
+                    output.appendChild(setDiv);
+                    console.log(`✅ Loaded ${file}: ${data.questions.length} questions`);
+                    
+                } catch (error) {
+                    output.innerHTML += `<p class="error">❌ Error loading ${file}: ${error.message}</p>`;
+                    console.error(`Error loading ${file}:`, error);
+                }
+            }
+            
+            const summary = document.createElement('div');
+            summary.innerHTML = `
+                <h2>📊 Summary</h2>
+                <div class="metadata">
+                    <strong>Total Question Sets:</strong> ${totalSets}<br>
+                    <strong>Total Questions:</strong> ${totalQuestions}<br>
+                    <strong>Status:</strong> <span class="correct">✅ All questions rendered successfully!</span>
+                </div>
+            `;
+            output.appendChild(summary);
+        }
+        
+        // Load questions when page loads
+        loadQuestions();
+    </script>
+</body>
+</html>

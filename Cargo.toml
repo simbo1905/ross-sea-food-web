@@ -33,6 +33,10 @@ path = "src/bin/test_runner.rs"
 name = "smoke-test"
 path = "src/bin/smoke_test.rs"
 
+[[bin]]
+name = "render-all-questions"
+path = "src/bin/render_all_questions.rs"
+
 [profile.release]
 strip = true
 opt-level = "z"

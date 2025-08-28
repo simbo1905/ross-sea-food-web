@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "title": "Ross Sea Food Web - Ocean Adventurers",
+    "description": "Explore the Ross Sea ecosystem with challenging questions about Antarctic marine life.",
+    "version": "1.0.0",
+    "targetAge": "9-14 years",
+    "subject": "Marine Biology",
+    "mode": "easy"
+  },
+  "questions": [
+    {
+      "id": "med_1",
+      "question": "Which animals form the largest biomass in the Ross Sea food web?",
+      "image1": "krill.png",
+      "image2": "krill.png",
+      "choices": ["Fish", "Krill", "Seals", "Whales"],
+      "correctAnswer": 1,
+      "explanation": "Krill form enormous swarms and represent the largest biomass in Antarctic waters. A single swarm can contain millions of individuals and stretch for kilometers!",
+      "category": "ecosystem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_2",
+      "question": "The whale above has teeth. What is its main prey?",
+      "image1": "toothed.png",
+      "image2": "squid.png",
+      "choices": ["Krill", "Phytoplankton", "Giant squid", "Small fish"],
+      "correctAnswer": 2,
+      "explanation": "Sperm whales and other toothed whales dive deep to hunt giant squid. Some battles between sperm whales and giant squid leave scars on the whale's skin!",
+      "category": "predator-prey",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_3",
+      "question": "Why are phytoplankton called 'primary producers'?",
+      "image1": "phytoplankton.png",
+      "image2": "phytoplankton.png",
+      "choices": ["They eat other organisms", "They produce their own food from sunlight", "They produce oxygen only", "They reproduce quickly"],
+      "correctAnswer": 1,
+      "explanation": "Phytoplankton are primary producers because they convert sunlight into food through photosynthesis, forming the base of the ocean food web.",
+      "category": "energy-flow",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_4",
+      "question": "How do baleen whales feed differently from toothed whales?",
+      "image1": "baleen.png",
+      "image2": "krill.png",
+      "choices": ["They hunt larger prey", "They filter small organisms from water", "They eat only plants", "They feed at night"],
+      "correctAnswer": 1,
+      "explanation": "Baleen whales have comb-like plates that filter huge amounts of water to catch tiny organisms like krill, while toothed whales hunt individual larger prey.",
+      "category": "adaptations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_5",
+      "question": "What role do these organisms play in the ecosystem?",
+      "image1": "bacteria.png",
+      "image2": "bacteria.png",
+      "choices": ["Primary producers", "Top predators", "Decomposers", "Primary consumers"],
+      "correctAnswer": 2,
+      "explanation": "Bacteria are decomposers that break down dead organisms and waste, recycling nutrients back into the ecosystem for primary producers to use.",
+      "category": "nutrient-cycling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_6",
+      "question": "Which predator is known for stealing penguin eggs and chicks?",
+      "image1": "birds.png",
+      "image2": "birds.png",
+      "choices": ["Seals", "Skua birds", "Whales", "Fish"],
+      "correctAnswer": 1,
+      "explanation": "Skuas are aggressive seabirds that prey on penguin eggs and chicks. They're opportunistic feeders and play an important role in the Antarctic ecosystem.",
+      "category": "predator-prey",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_7",
+      "question": "Why is overfishing of toothfish a concern for the Ross Sea ecosystem?",
+      "image1": "toothfish.png",
+      "image2": "fishing.png",
+      "choices": ["They eat too much krill", "They're primary producers", "They're top predators that control fish populations", "They produce oxygen"],
+      "correctAnswer": 2,
+      "explanation": "Toothfish are apex predators. Removing too many disrupts the balance by allowing their prey species to multiply unchecked, affecting the entire food web.",
+      "category": "human-impact",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_8",
+      "question": "What connects all organisms in this Antarctic food web?",
+      "image1": "krill.png",
+      "image2": "krill.png",
+      "choices": ["Temperature", "Krill as a key food source", "Ocean depth", "Migration patterns"],
+      "correctAnswer": 1,
+      "explanation": "Krill are the keystone species connecting primary producers to higher predators. Most Antarctic animals either eat krill directly or eat animals that feed on krill.",
+      "category": "food-web",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_9",
+      "question": "These bottom-dwelling creatures feed on what?",
+      "image1": "benthic.png",
+      "image2": "benthic.png",
+      "choices": ["Live fish", "Sunlight", "Marine snow (dead organic matter)", "Large whales"],
+      "correctAnswer": 2,
+      "explanation": "Benthic invertebrates feed on 'marine snow' - dead plankton, feces, and other organic matter that slowly sinks to the ocean floor from the waters above.",
+      "category": "energy-flow",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_10",
+      "question": "Which animal above can dive deepest in search of food?",
+      "image1": "seals.png",
+      "image2": "fish.png",
+      "choices": ["Penguins", "Krill", "Elephant seals", "Silverfish"],
+      "correctAnswer": 2,
+      "explanation": "Elephant seals can dive over 2,000 meters deep and hold their breath for up to 2 hours while hunting for deep-sea fish and squid!",
+      "category": "adaptations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_11",
+      "question": "In winter, what happens to phytoplankton populations?",
+      "image1": "phytoplankton.png",
+      "image2": "phytoplankton.png",
+      "choices": ["They increase", "They decrease due to less sunlight", "They stay the same", "They move deeper"],
+      "correctAnswer": 1,
+      "explanation": "Phytoplankton populations crash in winter when there's no sunlight for photosynthesis during the polar night, affecting the entire food web.",
+      "category": "seasonal-changes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "med_12",
+      "question": "How many penguins can a leopard seal eat in one day?",
+      "image1": "seals.png",
+      "image2": "penguins.png",
+      "choices": ["None - they're herbivores", "1-2 penguins", "5-6 penguins", "10+ penguins"],
+      "correctAnswer": 1,
+      "explanation": "Leopard seals are fierce predators that typically catch 1-2 penguins per day. They wait near ice edges where penguins enter and exit the water.",
+      "category": "predator-prey",
+      "difficulty": "medium"
+    }
+  ]
+}

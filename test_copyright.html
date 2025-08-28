@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Copyright and Attribution Test</title>
+</head>
+<body>
+    <h1>Testing Copyright and Attribution</h1>
+    <p>This test verifies that the copyright footer and attribution are present in the built index.html</p>
+    
+    <script>
+        async function runTests() {
+            console.log('Testing copyright and attribution...');
+            
+            // Load the built index.html in an iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = './index.html';
+            iframe.style.width = '100%';
+            iframe.style.height = '600px';
+            document.body.appendChild(iframe);
+            
+            await new Promise(resolve => {
+                iframe.onload = resolve;
+            });
+            
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            
+            // Test 1: Check for copyright footer
+            const copyrightFooter = iframeDoc.querySelector('.copyright-footer');
+            if (!copyrightFooter) {
+                console.error('❌ Copyright footer not found!');
+                return false;
+            }
+            console.log('✅ Copyright footer found');
+            
+            // Test 2: Check copyright content
+            const copyrightText = copyrightFooter.textContent;
+            if (!copyrightText.includes('The University of Waikato')) {
+                console.error('❌ University of Waikato not mentioned in copyright!');
+                return false;
+            }
+            console.log('✅ University of Waikato mentioned');
+            
+            if (!copyrightText.includes('sciencelearn.org.nz')) {
+                console.error('❌ Science Learning Hub URL not found!');
+                return false;
+            }
+            console.log('✅ Science Learning Hub URL found');
+            
+            if (!copyrightText.includes('M. Pinkerton') || !copyrightText.includes('NIWA')) {
+                console.error('❌ M. Pinkerton/NIWA attribution not found!');
+                return false;
+            }
+            console.log('✅ M. Pinkerton/NIWA attribution found');
+            
+            // Test 3: Check finish screen attribution
+            // We need to navigate to the finish screen
+            // For now, let's just check if the elements exist
+            const finishScreen = iframeDoc.querySelector('#finish-screen');
+            if (!finishScreen) {
+                console.error('❌ Finish screen not found!');
+                return false;
+            }
+            console.log('✅ Finish screen found');
+            
+            const attributionMessage = finishScreen.querySelector('.attribution-message');
+            if (!attributionMessage) {
+                console.error('❌ Attribution message on finish screen not found!');
+                return false;
+            }
+            console.log('✅ Attribution message found on finish screen');
+            
+            const visitLink = attributionMessage.querySelector('.visit-link');
+            if (!visitLink || !visitLink.href.includes('sciencelearn.org.nz')) {
+                console.error('❌ Visit link to Science Learning Hub not found or incorrect!');
+                return false;
+            }
+            console.log('✅ Visit link to Science Learning Hub found');
+            
+            console.log('\n🎉 All copyright and attribution tests passed!');
+            return true;
+        }
+        
+        // Run tests when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            runTests().then(success => {
+                if (!success) {
+                    document.body.innerHTML += '<h2 style="color: red;">Tests Failed!</h2>';
+                } else {
+                    document.body.innerHTML += '<h2 style="color: green;">All Tests Passed!</h2>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

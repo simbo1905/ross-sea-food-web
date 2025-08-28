@@ -25,6 +25,14 @@
         "properties": {
           "id": { "type": "string" },
           "question": { "type": "string" },
+          "image1": { 
+            "type": "string",
+            "description": "Image filename to display on question page"
+          },
+          "image2": { 
+            "type": "string",
+            "description": "Image filename to display on answer page"
+          },
           "choices": {
             "type": "array",
             "items": { "type": "string" },

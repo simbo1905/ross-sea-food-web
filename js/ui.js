@@ -27,9 +27,11 @@ class UIController {
             questionCounter: document.getElementById('question-counter'),
             scoreDisplay: document.getElementById('score-display'),
             questionText: document.getElementById('question-text'),
+            questionImage: document.getElementById('question-image'),
             choicesContainer: document.getElementById('choices-container'),
             resultIcon: document.getElementById('result-icon'),
             resultText: document.getElementById('result-text'),
+            answerImage: document.getElementById('answer-image'),
             explanationText: document.getElementById('explanation-text'),
             nextButton: document.getElementById('next-button'),
             finalScore: document.getElementById('final-score'),
@@ -261,6 +263,14 @@ class UIController {
         if (this.elements.questionText) {
             this.elements.questionText.textContent = question.question;
         }
+        
+        // Display question image if available
+        if (this.elements.questionImage && question.image1) {
+            this.elements.questionImage.src = question.image1;
+            this.elements.questionImage.style.display = 'block';
+        } else if (this.elements.questionImage) {
+            this.elements.questionImage.style.display = 'none';
+        }
 
         // Create choice buttons
         this.createChoiceButtons(question.choices);
@@ -346,6 +356,15 @@ class UIController {
         
         if (this.elements.explanationText) {
             this.elements.explanationText.textContent = result.explanation;
+        }
+        
+        // Display answer image if available
+        const currentQuestion = this.game.getCurrentQuestion();
+        if (this.elements.answerImage && currentQuestion && currentQuestion.image2) {
+            this.elements.answerImage.src = currentQuestion.image2;
+            this.elements.answerImage.style.display = 'block';
+        } else if (this.elements.answerImage) {
+            this.elements.answerImage.style.display = 'none';
         }
 
         console.log('Showing result screen...');
