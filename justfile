@@ -58,6 +58,7 @@ setup:
 # clean: remove generated artifacts
 clean:
     rm -f index.html
+    rm -rf test_output/*.png
     @echo "Cleaned generated files"
 
 # Internal guard: ensure tools exist and fail fast otherwise
