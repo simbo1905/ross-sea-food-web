@@ -37,6 +37,10 @@ path = "src/bin/smoke_test.rs"
 name = "render-all-questions"
 path = "src/bin/render_all_questions.rs"
 
+[[bin]]
+name = "screenshot-layout-test"
+path = "src/bin/screenshot_layout_test.rs"
+
 [profile.release]
 strip = true
 opt-level = "z"
