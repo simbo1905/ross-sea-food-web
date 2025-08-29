@@ -2,6 +2,30 @@
 
 This is a flash card game based on the NZ [The food web in the Ross Sea](https://www.sciencelearn.org.nz/images/the-food-web-in-the-ross-sea?utm_source=perplexity&utm_source=perplexity)
 
+```mermaid
+---
+config:
+  layout: elk
+---
+flowchart BT
+    PP(("Primary production\nphytoplankton & ice algae")) --> BD[("Bacteria & detritus")] & ZP["Zooplankton"] & KR["Krill"]
+    BD --> BI["Benthic invertebrates"]
+    ZP --> SF["Silverfish"] & SQ["Squid"] & FI["Fish"]
+    KR --> SF & SQ & FI & BW["Baleen whales"] & PG["Penguins"] & SE["Seals"] & FB["Flying birds"]
+    BI --> FI
+    FI --> TF["Toothfish"] & SE & PG & FB & TW["Toothed whales"] & FH["Fishing"]
+    SQ --> TF & SE & PG & FB & TW
+    SF --> PG & SE
+    TF --> SE & TW & FH
+    FI -.-> BD
+    SQ -.-> BD
+    SF -.-> BD
+    SE -.-> BD
+    PG -.-> BD
+    TW -.-> BD
+    BW -.-> BD
+```
+
 🎮 **[Play the game online!](https://simbo1905.github.io/ross-sea-food-web/)**
 
 ## Features
