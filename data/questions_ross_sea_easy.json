@@ -109,12 +109,12 @@
     },
     {
       "id": "kids_10",
-      "question": "Which tiny creatures are eaten by silverfish?",
-      "image1": "ZP.png",
-      "image2": "SF.png",
-      "choices": ["Bacteria", "Large fish", "Zooplankton", "Seals"],
-      "correctAnswer": 2,
-      "explanation": "Silverfish eat zooplankton! These are tiny floating animals that drift in the water. Silverfish swim through the water with their mouths open to catch them.",
+      "question": "What do flying birds eat in the ocean?",
+      "image1": "FB.png",
+      "image2": "KR.png",
+      "choices": ["Large fish", "Krill", "Whales", "Bacteria"],
+      "correctAnswer": 1,
+      "explanation": "Flying birds like petrels and albatrosses catch krill from the ocean surface! They swoop down and grab these tiny shrimp-like creatures while they're near the top of the water.",
       "category": "food-chain",
       "difficulty": "easy"
     }
