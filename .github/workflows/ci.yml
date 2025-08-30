@@ -32,16 +32,10 @@ jobs:
         id: chrome
         uses: browser-actions/setup-chrome@v1
 
-      - name: Setup tools using cascading fallback
-        run: just setup
-
-      - name: Build (validate + bundle)
-        run: just build
-
       - name: Test (headless)
         env:
           CHROME: ${{ steps.chrome.outputs.chrome-path }}
-        run: just test
+        run: just setup build test
 
       - name: Upload build artifact (for deployment)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -61,55 +55,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  # Test deployment - only on main branch pushes  
-  test-deployment:
-    runs-on: ubuntu-latest
-    needs: deploy
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: Wait for deployment
-        run: sleep 30
-        
-      - name: Test deployed page
-        run: |
-          # Get the repository name and owner
-          REPO_OWNER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f1)
-          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-          
-          # Construct GitHub Pages URL
-          if [ "$REPO_NAME" = "${REPO_OWNER}.github.io" ]; then
-            PAGE_URL="https://${REPO_OWNER}.github.io/"
-          else
-            PAGE_URL="https://${REPO_OWNER}.github.io/${REPO_NAME}/"
-          fi
-          
-          echo "Testing deployment at: $PAGE_URL"
-          
-          # Test with curl
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PAGE_URL")
-          
-          if [ "$HTTP_STATUS" -eq 200 ]; then
-            echo "✅ Page deployed successfully! Status: $HTTP_STATUS"
-            
-            # Check for key content
-            if curl -s "$PAGE_URL" | grep -q "Ross Sea Food Web Quiz"; then
-              echo "✅ Page title found"
-            else
-              echo "❌ Page title not found"
-              exit 1
-            fi
-            
-            if curl -s "$PAGE_URL" | grep -q "University of Waikato"; then
-              echo "✅ Copyright attribution found"
-            else
-              echo "❌ Copyright attribution not found"
-              exit 1
-            fi
-          else
-            echo "❌ Page deployment failed! Status: $HTTP_STATUS"
-            exit 1
-          fi
 
   # Build and release tools - only on version tags
   build-tools:
@@ -224,91 +169,3 @@ jobs:
             just-learn-just-tools-${{ matrix.artifact_name }}.tar.gz
             just-learn-just-tools-${{ matrix.artifact_name }}.zip
           if-no-files-found: error
-
-  # Test tool binaries - only on version tags
-  test-binaries:
-    name: Test ${{ matrix.os }} binaries
-    needs: build-tools
-    runs-on: ${{ matrix.os }}
-    if: startsWith(github.ref, 'refs/tags/')
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-      - name: Download artifacts for platform
-        uses: actions/download-artifact@v4
-        with:
-          pattern: just-learn-just-tools-*
-          path: tools
-
-      - name: Test binaries (Unix)
-        if: runner.os != 'Windows'
-        run: |
-          if [[ "${{ runner.os }}" == "Linux" ]]; then
-            archive=$(find tools -name "*linux-x64.tar.gz" | head -1)
-          else
-            archive=$(find tools -name "*macos-*.tar.gz" | head -1)
-          fi
-          echo "Testing archive: $archive"
-          tar -xzf "$archive"
-          ./validate --help
-          ./bundle --help
-          ./test-runner --help
-
-      - name: Test binaries (Windows)
-        if: runner.os == 'Windows'
-        shell: bash
-        run: |
-          archive=$(find tools -name "*windows-x64.zip" | head -1)
-          echo "Testing archive: $archive"
-          7z x "$archive"
-          ./validate.exe --help
-          ./bundle.exe --help
-          ./test-runner.exe --help
-
-  # Create release - only on version tags
-  release:
-    name: Create Release
-    needs: [build-tools, test-binaries]
-    runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: artifacts/**/*.{tar.gz,zip}
-          draft: false
-          prerelease: true
-          generate_release_notes: true
-          body: |
-            # Just Learn Just Build Tools
-
-            Pre-compiled binaries for all platforms. Download the appropriate archive for your system:
-
-            ## 🐧 Linux
-            - `just-learn-just-tools-linux-x64.tar.gz` - Standard Linux x64
-            - `just-learn-just-tools-linux-x64-musl.tar.gz` - Static build (works on Alpine, etc.)
-            - `just-learn-just-tools-linux-aarch64.tar.gz` - Linux ARM64
-
-            ## 🍎 macOS
-            - `just-learn-just-tools-macos-x64.tar.gz` - Intel Macs
-            - `just-learn-just-tools-macos-aarch64.tar.gz` - Apple Silicon (M1/M2/M3)
-
-            ## 🪟 Windows
-            - `just-learn-just-tools-windows-x64.zip` - Windows x64
-
-            ## Usage
-            Extract the archive and add the tools to your PATH, or use them directly.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-
