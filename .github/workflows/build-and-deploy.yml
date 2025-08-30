@@ -25,20 +25,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download pre-built tools
-        run: |
-          # Create .tools directory
-          mkdir -p .tools
-          
-          # Download validate tool
-          curl -L -o .tools/validate \
-            https://github.com/rrcobb/just-learn-just-game/releases/download/v0.1.0/validate-x86_64-unknown-linux-gnu
-          chmod +x .tools/validate
-          
-          # Download bundle tool
-          curl -L -o .tools/bundle \
-            https://github.com/rrcobb/just-learn-just-game/releases/download/v0.1.0/bundle-x86_64-unknown-linux-gnu
-          chmod +x .tools/bundle
+      - name: Install just
+        uses: extractions/setup-just@v1
+
+      - name: Setup tools using cascading fallback
+        run: just setup
 
       - name: Validate JSON files
         run: .tools/validate
