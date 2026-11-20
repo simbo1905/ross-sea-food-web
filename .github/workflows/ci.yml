@@ -12,15 +12,18 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
+# One run per ref. Superseded pull-request runs are cancelled so stale work is
+# not billed; push-to-main runs are intentionally left non-cancelling because
+# that path carries the GitHub Pages deployment.
 concurrency:
-  group: "pages-${{ github.ref }}"
-  cancel-in-progress: false
+  group: "ci-${{ github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   # Build and test job - runs for all events
   build-and-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,6 +52,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: build-and-test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
@@ -60,6 +64,7 @@ jobs:
   build-tools:
     name: Build ${{ matrix.target }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
     if: github.ref == 'refs/heads/main'
     strategy:
       fail-fast: false
